@@ -1,0 +1,47 @@
+<app-loading *ngIf="loading" class="m-5"></app-loading>
+<div clas="row animated fateIn" *ngIf="!loading">
+    <div class="col-2">
+        <img [src]="artist.images | noImage" class="img-thumbnail img-circle " alt="">
+    </div>
+    <div class="col">
+        <h3>{{artist.name}}</h3>
+        <p>
+            <!-- el target evita que se salga de la app -->
+            <a [href]="artist.external_urls.spotify" target="blank">
+               Go to the artist´s page.</a>
+        </p>
+    </div>
+    <!-- router link es el equivalente al href solo se indica la ruta-->
+    <div class="col-4 text-right">
+        <button routerLink="/search" class="btn btn-outline-danger"> Go back</button>
+    </div>
+</div>
+
+<div class="row m-5">
+    <div class="col">
+        <table class="table table-borderless table-dark table-hover">
+            <thead>
+                <tr>
+                    <th></th>
+                    <th>Album</th>
+                    <th>Song</th>
+                    <th>Preview</th>
+                    <th>Date realesed</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let track of topTracks">
+                    <td><img [src]="track.album.images | noImage" class="img-thumb " alt=""></td>
+                    <td>{{track.album.name}}</td>
+                    <td>{{track.name}}</td>
+                    <td>
+                        <!--dos formas para usar el reproductor con mascara por defecto o widget de spotify-->
+                        <!----audio [src]="track.preview_url" controls></audio-->
+                        <iframe [src]="track.uri | domseguro" width="300" height="80" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+                    </td>
+                    <td>{{track.album.release_date}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
