@@ -2,7 +2,7 @@
 <image src="presentation.jpg" alt="image not avaible">
 <p>
   This application use the Spotify resources with APIRest services.
-  For using this app you must refres the token every hour.
+  For using this app you must refresh the token every hour.
   I advice you using the postman app to do that!.
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.1.1.
 
